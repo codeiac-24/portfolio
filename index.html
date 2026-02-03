@@ -2,415 +2,54 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Julian Vesper | Senior Full-Stack Developer</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- THE VIBRANT BACKGROUND & GLOW (AS REQUESTED) --- */
-        :root {
-            --primary-glow: #00f2ff;
-            --secondary-glow: #7000ff;
-            --accent-pink: #ff00c8;
-            --text-color: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.08);
-            --glass-border: rgba(255, 255, 255, 0.15);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #050505;
-            color: var(--text-color);
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .bg-circles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            filter: blur(80px);
-            overflow: hidden;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: move 25s infinite alternate;
-        }
-
-        .c1 { width: 400px; height: 400px; background: var(--primary-glow); top: -10%; left: -5%; }
-        .c2 { width: 500px; height: 500px; background: var(--secondary-glow); bottom: -10%; right: -5%; animation-delay: -5s; }
-        .c3 { width: 300px; height: 300px; background: var(--accent-pink); top: 40%; left: 30%; animation-delay: -10s; }
-
-        @keyframes move {
-            from { transform: translate(0, 0) scale(1); }
-            to { transform: translate(150px, 100px) scale(1.2); }
-        }
-
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        }
-
-        header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 90%;
-            max-width: 1100px;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary-glow);
-            text-shadow: 0 0 10px var(--primary-glow);
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary-glow);
-            text-shadow: 0 0 10px var(--primary-glow);
-        }
-
-        /* --- CONTAINER --- */
-        .container {
-            max-width: 1000px;
-            margin: 140px auto 50px auto;
-            padding: 20px;
-        }
-
-        section {
-            margin-bottom: 60px;
-            padding: 40px;
-        }
-
-        h2 {
-            margin-bottom: 30px;
-            font-size: 2.2rem;
-            color: var(--primary-glow);
-            text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
-        }
-
-        /* --- ABOUT SECTION --- */
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .profile-img {
-            width: 220px;
-            height: 220px;
-            border-radius: 20px; /* Slight rounded corners for modern look */
-            object-fit: cover;
-            border: 2px solid var(--primary-glow);
-            box-shadow: 0 0 20px var(--primary-glow);
-        }
-
-        .bio { flex: 1; min-width: 300px; }
-        .bio p { line-height: 1.8; margin-bottom: 15px; opacity: 0.9; }
-
-    
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .skill-badge {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .skill-badge:hover {
-            background: var(--primary-glow);
-            color: #000;
-            box-shadow: 0 0 15px var(--primary-glow);
-            transform: translateY(-3px);
-        }
-
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            padding: 20px;
-            transition: 0.4s;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-pink);
-            transform: scale(1.02);
-        }
-
-        .project-card img {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 15px;
-        }
-
-        .project-card h3 { color: var(--primary-glow); margin-bottom: 8px; }
-        .project-card p { font-size: 0.9rem; opacity: 0.8; line-height: 1.6; }
-
-        /* --- RESUME SECTION (DETAILED) --- */
-        .resume-preview {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            text-align: left;
-            margin-bottom: 40px;
-        }
-
-        .resume-col h4 {
-            color: var(--accent-pink);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .resume-item { margin-bottom: 20px; }
-        .resume-item h5 { font-size: 1.1rem; color: #fff; }
-        .resume-item span { font-size: 0.8rem; color: var(--primary-glow); }
-        .resume-item p { font-size: 0.85rem; opacity: 0.7; margin-top: 5px; }
-
-        .btn-download {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 0 20px rgba(112, 0, 255, 0.5);
-            transition: 0.3s;
-        }
-
-        .btn-download:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px var(--primary-glow);
-        }
-
-        /* --- CONTACT SECTION --- */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-        }
-
-        .contact-method h4 { color: var(--accent-pink); margin-bottom: 5px; }
-        .contact-method p { font-size: 1.1rem; }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid var(--glass-border);
-            margin-top: 40px;
-        }
-
-        .social-links { margin-bottom: 20px; }
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover { opacity: 1; color: var(--primary-glow); }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            .resume-preview { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.5rem; }
-        }
-    </style>
+    <title>Zenith | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="prism-bg"></div>
 
-    <!-- ANIMATED BACKGROUND -->
-    <div class="bg-circles">
-        <div class="circle c1"></div>
-        <div class="circle c2"></div>
-        <div class="circle c3"></div>
-    </div>
-
-    <!-- HEADER -->
-    <header class="glass">
-        <a href="#" class="logo">VESPER.JS</a>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Work</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        
-        <!-- ABOUT SECTION -->
-        <section id="about" class="glass">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?fit=crop&w=400&h=400" alt="Julian Vesper Profile" class="profile-img">
-                <div class="bio">
-                    <p>I am <strong>Julian Vesper</strong>, a Senior Full-Stack Developer with over 6 years of experience building high-end digital solutions. I specialize in the <strong>MERN stack</strong> and creative UI architecture.</p>
-                    <p>My philosophy is simple: Websites should be fast, functional, and visually unforgettable. I bridge the gap between complex backend logic and pixel-perfect frontend design.</p>
-                </div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">ZENITH<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="features.html">Features</a>
+                <a href="contact.html">Contact</a>
             </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="glass">
-            <h2>Technical Expertise</h2>
-            <div class="skills-container">
-                <div class="skill-badge">JavaScript (ES6+)</div>
-                <div class="skill-badge">React & Next.js</div>
-                <div class="skill-badge">Node.js / Express</div>
-                <div class="skill-badge">Python / Django</div>
-                <div class="skill-badge">PostgreSQL & MongoDB</div>
-                <div class="skill-badge">AWS Cloud</div>
-                <div class="skill-badge">UI/UX (Figma)</div>
-                <div class="skill-badge">Docker & CI/CD</div>
-            </div>
-        </section>
-
-        <!-- PROJECTS SECTION -->
-        <section id="projects" class="glass">
-            <h2>Selected Works</h2>
-            <div class="project-grid">
-                <div class="project-card glass">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?fit=crop&w=400&h=250" alt="SaaS Dashboard">
-                    <h3>Aether Analytics</h3>
-                    <p>A data-intensive SaaS dashboard providing real-time financial insights using D3.js and WebSockets.</p>
-                </div>
-                <div class="project-card glass">
-                    <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?fit=crop&w=400&h=250" alt="Mobile App">
-                    <h3>Vortex E-Commerce</h3>
-                    <p>A high-performance headless commerce platform built with Next.js and Shopify API, featuring glassmorphism UI.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- RESUME SECTION (APPROPRIATE DETAILS FILLED) -->
-        <section id="resume" class="glass" style="text-align: center;">
-            <h2>Curriculum Vitae</h2>
-            
-            <div class="resume-preview">
-                <!-- Column 1: Experience -->
-                <div class="resume-col">
-                    <h4>Work Experience</h4>
-                    <div class="resume-item">
-                        <h5>Senior Web Developer</h5>
-                        <span>TechFlow Solutions | 2021 - Present</span>
-                        <p>Leading a team of 5 developers to build scalable cloud applications and modernizing legacy codebases.</p>
-                    </div>
-                    <div class="resume-item">
-                        <h5>Full-Stack Developer</h5>
-                        <span>Pixel Perfect Agency | 2018 - 2021</span>
-                        <p>Developed over 40+ custom WordPress and React-based websites for global clients.</p>
-                    </div>
-                </div>
-                
-                <!-- Column 2: Education -->
-                <div class="resume-col">
-                    <h4>Education</h4>
-                    <div class="resume-item">
-                        <h5>M.S. in Computer Science</h5>
-                        <span>Stanford University | 2016 - 2018</span>
-                        <p>Focused on Software Architecture and Artificial Intelligence.</p>
-                    </div>
-                    <div class="resume-item">
-                        <h5>B.S. in Software Engineering</h5>
-                        <span>State University | 2012 - 2016</span>
-                        <p>Graduated with Honors. Specialized in Web Technologies.</p>
-                    </div>
-                </div>
-            </div>
-
-            <p style="margin-bottom: 25px; opacity: 0.8;">Need a hard copy of my professional background?</p>
-            
-            <!-- This is the functional download link -->
-            <a href="data:application/pdf;base64,JVBERi0xLjcKCjEgMCBvYmogICUgaGVhZGVyCjw8IC9UeXBlIC9DYXRhbG9nIC9QYWdlcyAyIDAgUiA+PgplbmRvYmoKCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCgozIDAgb2JqCjw8IC9UeXBlIC9QYWdlIC9QYXJlbnQgMiAwIFIgL01lZGlhQm94IFswIDAgNjEyIDc5Ml0gL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNCAwIFIgPj4gPj4gL0NvbnRlbnRzIDUgMCBSID4+CmVuZG9iagoKNCAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VGb250IC9IZWx2ZXRpY2EtQm9sZCA+PgplbmRvYmoKCjUgMCBvYmoKPDwgL0xlbmd0aCAxNTcgPj4Kc3RyZWFtCkJUCi9GMSAyNCBUZgoxMDAgNzUwIFRkCihKVUxJQU4gVkVTUEVSIC0gUkVTVU1FKSBUagowIC00MCBUZgovRjEgMTIgVGYKKEZ1bGwtU3RhY2sgRGV2ZWxvcGVyIHwgNisgWWVhcnMgRXhwZXJpZW5jZSkgVGoKMCAtMzAgVGQKKGVtYWlsOiBqdWxpYW4udmVzcGVyQGVtYWlsLmNvbSkgVGoKMCAtMjAgVGQKKGxvY2F0aW9uOiBTYW4gRnJhbmNpc2NvLCBDQSkgVGoKRVQKZW5kc3RyZWFtCmVuZG9iagoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDE1IDAwMDAwIG4gCjAwMDAwMDAwNjAgMDAwMDAgbiAKMDAwMDAwMDExMSAwMDAwMCBuIAowMDAwMDAwMjQzIDAwMDAwIG4gCjAwMDAwMDAzMDkgMDAwMDAgbiAKdHJhaWxlcgo8PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgowNDQ1CiUlRU9GCg==" 
-               download="Julian_Vesper_Resume.pdf" 
-               class="btn-download">
-                Download Full PDF Resume
-            </a>
-        </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="glass">
-            <h2>Get In Touch</h2>
-            <div class="contact-grid">
-                <div class="contact-method">
-                    <h4>Email</h4>
-                    <p>julian.vesper@email.com</p>
-                </div>
-                <div class="contact-method">
-                    <h4>Phone</h4>
-                    <p>+1 (555) 888-2024</p>
-                </div>
-                <div class="contact-method">
-                    <h4>Office</h4>
-                    <p>Market St, San Francisco, CA</p>
-                </div>
-            </div>
-        </section>
-
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="social-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="#">Twitter</a>
+            <a href="features.html" class="btn btn-primary" style="padding: 10px 25px;">Start Building</a>
         </div>
-        <p>&copy; 2024 Julian Vesper. All rights reserved.</p>
-        <p style="opacity: 0.4; font-size: 0.7rem; margin-top: 10px;">Designed with Glassmorphism & Neon Glow.</p>
-    </footer>
+    </nav>
 
+    <main style="padding-top: 150px; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto; padding: 50px 20px;">
+            <h1 style="font-size: 5rem; line-height: 1;">Architecting <br>The <span style="color: var(--primary);">Future</span></h1>
+            <p style="margin: 30px 0; opacity: 0.6; font-size: 1.2rem;">Select a capability below to explore our core infrastructure and specialized technologies.</p>
+        </div>
+
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px;">
+            
+            <!-- Clickable Capability 1 -->
+            <a href="features.html#logic" class="glass-card">
+                <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 20px;">01. INFRASTRUCTURE</div>
+                <h3>Deep Logic</h3>
+                <p style="opacity: 0.6; margin-top: 15px;">Advanced backend architectures designed for massive scale.</p>
+            </a>
+
+            <!-- Clickable Capability 2 -->
+            <a href="features.html#design" class="glass-card">
+                <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 20px;">02. INTERFACE</div>
+                <h3>Pixel Flow</h3>
+                <p style="opacity: 0.6; margin-top: 15px;">Immersive frontend experiences with glassmorphism UI.</p>
+            </a>
+
+            <!-- Clickable Capability 3 -->
+            <a href="features.html#cloud" class="glass-card">
+                <div style="font-size: 0.8rem; color: var(--primary); margin-bottom: 20px;">03. CLOUD</div>
+                <h3>Cloud Pulse</h3>
+                <p style="opacity: 0.6; margin-top: 15px;">Global deployment with zero-latency edge networking.</p>
+            </a>
+        </div>
+    </main>
 </body>
 </html>
